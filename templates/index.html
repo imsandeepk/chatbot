@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Lund Research Intern</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: "Verdana", sans-serif;
+            background-color: #ffffcc;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #e6e6fa;
+            padding: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #cccccc;
+            padding: 6px;
+            font-family: "Verdana", sans-serif;
+        }
+
+        .btn-primary {
+            background-color: #ffcc00;
+            border-color: #ffcc00;
+            padding: 8px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        #output {
+            display: none;
+            margin-top: 20px;
+            background-color: #ffffcc;
+            padding: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+        }
+
+        #output p {
+            margin: 0;
+            font-size: 18px;
+            font-family: "Verdana", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container form-container">
+        <h1>Digital Chemistry Chatbot</h1>
+        <form action="/process" method="post">
+            <div class="form-group">
+                <label for="prompt">Enter the Prompt </label>
+                <textarea class="form-control" id="prompt" name="prompt" rows="5" required>{{ prompt }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div id="output">
+            {% if output %}
+            <p>{{ output }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        // Display output field after receiving response
+        {% if output %}
+        document.getElementById("output").style.display = "block";
+        {% endif %}
+    </script>
+</body>
+
+</html>
