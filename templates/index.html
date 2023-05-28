@@ -14,22 +14,26 @@
         }
 
         .form-container {
-            max-width: 500px;
+            max-width: 800px;
             margin: 0 auto;
             background-color: #19A7CE;
             padding: 20px;
             border: 3px solid #000000;
             border-radius: 8px;
+            backdrop-filter: blur(8px);
         }
 
         h1 {
             font-size: 24px;
             margin-bottom: 20px;
             text-align: center;
+            text-decoration: underline;
+            color: white;
         }
 
         .form-group {
             margin-bottom: 20px;
+            
         }
 
         label {
@@ -49,11 +53,11 @@
         }
 
         .btn-primary {
-            background-color: #AFD3E2;
+            background-color: #89CFF0;
             border-color: #ffcc00;
-            padding: 8px 20px;
+            padding: 8px 20px ;
             font-size: 16px;
-            border-radius: 4px;
+            border-radius: 3px solid #000000;
         }
 
         #output {
@@ -81,7 +85,7 @@
                 <label for="prompt">Enter the Prompt: </label>
                 <textarea class="form-control" id="prompt" name="prompt" rows="5" required>{{ prompt }}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn-primary btn">Submit</button>
         </form>
         <div id="output">
             {% if output %}
