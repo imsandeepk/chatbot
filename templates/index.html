@@ -9,30 +9,44 @@
     <style>
         body {
             padding: 50px;
-            font-family: "Verdana", sans-serif;
+            
+            font-family: "Verdana", sans-serif, "noto-sans";
             background-color: #146C94;
         }
 
         .form-container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #19A7CE;
+            background-image: url("../static/chem.png") ;
+            background-size: strecth;
+            backdrop-filter: blur(8px); /* Apply backdrop blur effect */
+            z-index: -1;
             padding: 20px;
+            box-shadow: 12px 12px 26px 4px rgba(0,0,0,0.8);
             border: 3px solid #000000;
             border-radius: 8px;
-            backdrop-filter: blur(8px);
+            
         }
 
         h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-            text-decoration: underline;
-            color: white;
+            margin-bottom: 20px; 
+            font-family: "Lucida Console", Monaco, monospace;
+            font-size: 25px;
+            letter-spacing: -0.4px;
+            word-spacing: 1.2px;
+            color: #ffffff;
+            font-weight: 700;
+            text-decoration: underline ;
+            font-style: normal;
+            font-variant: small-caps;
+            text-transform: uppercase;
+            text-align: center
+            
         }
 
         .form-group {
             margin-bottom: 20px;
+            color: #ffffff;
             
         }
 
@@ -54,14 +68,18 @@
 
         .btn-primary {
             background-color: #89CFF0;
-            border-color: #ffcc00;
+            font-family: "Lucida Console", Monaco, monospace;
+            border-color: #000000;
             padding: 8px 20px ;
+            box-shadow: 12px 12px 26px 4px rgba(0,0,0,0.8);
             font-size: 16px;
             border-radius: 3px solid #000000;
+            
         }
 
         #output {
             display: none;
+            font-family: "Lucida Console", Monaco, monospace;
             margin-top: 20px;
             background-color: #F6F1F1;
             padding: 20px;
@@ -71,6 +89,7 @@
 
         #output p {
             margin: 0;
+            font-family: "Lucida Console", Monaco, monospace;
             font-size: 18px;
             font-family: "Verdana", sans-serif;
         }
@@ -78,8 +97,9 @@
 </head>
 
 <body>
+    <h1>Digital Chemistry Chatbot</h1>
     <div class="container form-container">
-        <h1>Digital Chemistry Chatbot</h1>
+        
         <form action="/process" method="post">
             <div class="form-group">
                 <label for="prompt">Enter the Prompt: </label>
