@@ -20,8 +20,8 @@ def process():
     return render_template('index.html', output=chat_completion)
 
 def prompt(input):
-    chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": f"{input}"}])
-    return chat_completion.choices[0].message.content
+    chat_completion = openai.Completion.create(model="ada:ft-birmingham-digital-chemistry-2023-03-06-07-46-06", prompt= input, temperature=0, max_tokens=1)
+    return chat_completion.choices[0].text
 
 if __name__ == '__main__':
     app.run(debug=True)
