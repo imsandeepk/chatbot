@@ -46,7 +46,7 @@ def prompt(input):
         if chat_completion.choices[0].text=="2":
             check(chat_completion_lumo)
             return "Homo-High",check(chat_completion_lumo)
-        else:
+    else:
             return "Homo-None",check(chat_completion_lumo)
         
     
