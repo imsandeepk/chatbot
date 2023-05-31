@@ -29,7 +29,7 @@ def check(chat_completion_lumo):
             return "Lumo-Medium"
         if chat_completion_lumo.choices[0].text=="2":
             return "Lumo-High"
-        else:
+    else:
             return "Lumo-None"
     
 def prompt(input):
