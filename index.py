@@ -25,7 +25,12 @@ def prompt(input):
     print(chat_completion.choices[0].text)
     print(type(chat_completion.choices[0].text))
     if chat_completion.choices[0].text in output:
-        return chat_completion.choices[0].text
+        if chat_completion.choices[0].text=="0":
+            return "Low"
+        if chat_completion.choices[0].text=="1":
+            return "Medium"
+        if chat_completion.choices[0].text=="2":
+            return "High"
     else:
         return "None";
 
