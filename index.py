@@ -21,7 +21,13 @@ def process():
 
 def prompt(input):
     chat_completion = openai.Completion.create(model="ada:ft-birmingham-digital-chemistry-2023-03-06-07-46-06", prompt= input, temperature=0, max_tokens=1)
-    return chat_completion.choices[0].text
+    output = ["0","1","2"]
+    print(chat_completion.choices[0].text)
+    print(type(chat_completion.choices[0].text))
+    if chat_completion.choices[0].text in output:
+        return chat_completion.choices[0].text
+    else:
+        return "None";
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5500)
