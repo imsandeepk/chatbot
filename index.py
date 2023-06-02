@@ -16,13 +16,19 @@ def index():
 @app.route('/process', methods=['POST'])
 def process():
     input = request.form['prompt']
-    chat_completion = prompt(input)
+    option = request.form["dropdown"]
+    chat_completion = prompt(input,option)
     return render_template('index.html', output=chat_completion)
 
-def prompt(input):
-
-    chat_completion_homo = openai.Completion.create(model="ada:ft-birmingham-digital-chemistry-2023-03-06-07-46-06", prompt= input, temperature=0, max_tokens=1)
-    chat_completion_lumo = openai.Completion.create(model="ada:ft-birmingham-digital-chemistry-2023-03-06-15-11-11", prompt= input, temperature=0, max_tokens=1)
+def prompt(input,option):
+    models = {
+        "1": {"homo": "ada:ft-birmingham-digital-chemistry-2023-03-06-07-46-06", 
+              "lumo": "ada:ft-birmingham-digital-chemistry-2023-03-06-15-11-11"},
+        "2": {"homo": "ada:ft-birmingham-digital-chemistry-2023-06-02-00-09-46", 
+              "lumo": "ada:ft-birmingham-digital-chemistry-2023-06-02-01-05-30"}
+        }
+    chat_completion_homo = openai.Completion.create(model=f"{models[option]['homo']}", prompt= input, temperature=0, max_tokens=1)
+    chat_completion_lumo = openai.Completion.create(model=f"{models[option]['lumo']}", prompt= input, temperature=0, max_tokens=1)
 
     smile = {"0": "Low", "1": "Medium", "2": "High"}
     output = ""
