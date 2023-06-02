@@ -42,11 +42,11 @@ def prompt(input,option):
         }
 
     if (option=="3"):
-        m1 = f"""Model 1: {chat(input,models['1'])}  """
+        m1 = f"""CSD Models: {chat(input,models['1'])}  """
         
-        m2 = f"""Model 2: {chat(input,models['2'])} """  
+        m2 = f"""QM9 Models: {chat(input,models['2'])} """  
         
-        return f"({m1} ; {m2})" 
+        return f"{m1} ; {m2}" 
     else:
         return chat(input,models[option])
     
