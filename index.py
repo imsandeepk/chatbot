@@ -20,7 +20,7 @@ def process():
     chat_completion = prompt(input,option)
     return render_template('index.html', output=chat_completion)
 
-def chat(input,models,option):
+def chat(input,models,option=None):
     chat_completion_homo = openai.Completion.create(model=f"{models['homo']}", prompt= input, temperature=0, max_tokens=1)
     chat_completion_lumo = openai.Completion.create(model=f"{models['lumo']}", prompt= input, temperature=0, max_tokens=1)
 
@@ -30,7 +30,7 @@ def chat(input,models,option):
     output += f"Homo-{smile.get(chat_completion_homo.choices[0].text, 'None')} , "
     output+="\n"
     output += f"Lumo-{smile.get(chat_completion_lumo.choices[0].text, 'None')}"  
-    if(option=="1"):
+    if(option=="1" or option=="3"):
         chat_completion_optical = openai.Completion.create(model=f"{models['optical activity']}", prompt= input, temperature=0, max_tokens=1)
         output += f", Optical Gap-{smile.get(chat_completion_optical.choices[0].text, 'None')}"     
         
@@ -49,7 +49,9 @@ def prompt(input,option):
     if (option=="3"):
         m1 = f"""CSD Models: {chat(input,models['1'],option)}  """
         
-        m2 = f"""QM9 Models: {chat(input,models['2'],option)} """  
+        
+        m2 = f"""QM9 Models: {chat(input,models['2'])} """  
+        
         
         return f"{m1} ; {m2}" 
     else:
